@@ -1,7 +1,10 @@
 <template>
-    <div class="post">
+    <div v-if="post" class="post">
         <h3>{{ post.title }}</h3>
         <p class="pre"> {{ post.body }}</p>
+    </div>
+    <div v-else>
+        <spinner></spinner>
     </div>
 </template>
 
@@ -9,8 +12,10 @@
 import {Options, Vue} from "vue-class-component";
 import PostModel from "@/model/PostModel";
 import {mapActions} from "vuex";
+import Spinner from "@/components/Spinner.vue";
 
 @Options({
+    components: {Spinner},
     props: {
         id: String,
     },
