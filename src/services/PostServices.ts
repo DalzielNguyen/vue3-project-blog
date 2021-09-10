@@ -29,5 +29,28 @@ export default new class PostServices {
         }
         return {} as PostModel;
     }
+
+    async submitPost(post: PostModel): Promise<boolean> {
+        try {
+            let response = await fetch(SERVER_URL, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: post.title,
+                    body: post.body,
+                    tags: post.tags
+                })
+            })
+            if (!response.ok) {
+                throw  Error('Error to send data');
+            }
+            return true;
+        } catch (error) {
+            console.log(error.message);
+        }
+        return false;
+    }
 };
 

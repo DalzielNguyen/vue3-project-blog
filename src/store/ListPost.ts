@@ -43,6 +43,20 @@ const actions: ActionTree<ListPostModel, PostModel> = {
             commit('setError', "No value");
         }
         return {} as PostModel;
+    },
+
+    async submitPost({commit, dispatch}, post: PostModel): Promise<boolean> {
+        try {
+            const result: boolean = await PostServices.submitPost(post);
+            if (result){
+                dispatch("fetchData");
+                return true;
+            }
+        } catch (error) {
+            error.value = error.message;
+            commit('setError', error.value);
+        }
+        return false;
     }
 }
 
