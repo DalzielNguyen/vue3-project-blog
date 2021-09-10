@@ -1,5 +1,5 @@
 interface PostModel {
-    id: number,
+    id: string,
     title: string,
     body: string,
     tags: string[]

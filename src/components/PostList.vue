@@ -2,7 +2,6 @@
     <div class="post-list">
         <div v-for="post in posts" :key="post">
             <SinglePost :post="post"></SinglePost>
-
         </div>
     </div>
 </template>
