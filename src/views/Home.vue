@@ -29,6 +29,7 @@ import Spinner from "@/components/Spinner.vue";
         ...mapActions('listPost', { fetchData: "fetchData"}),
     },
 })
+
 export default class Home extends Vue {
     posts!:PostModel[];
     showPosts: boolean = true;
@@ -38,3 +39,13 @@ export default class Home extends Vue {
     }
 }
 </script>
+
+<style>
+.home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px
+}
+
+
+</style>

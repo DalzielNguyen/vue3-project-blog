@@ -1,5 +1,5 @@
 <template>
-    <div v-if="post" class="post">
+    <div v-if="post.id" class="post">
         <h3>{{ post.title }}</h3>
         <p class="pre"> {{ post.body }}</p>
     </div>
@@ -15,7 +15,9 @@ import {mapActions} from "vuex";
 import Spinner from "@/components/Spinner.vue";
 
 @Options({
-    components: {Spinner},
+    components: {
+        Spinner
+    },
     props: {
         id: String,
     },
@@ -43,6 +45,6 @@ export default class Details extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
