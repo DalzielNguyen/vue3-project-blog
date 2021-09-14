@@ -52,5 +52,6 @@ export default new class PostServices {
         }
         return false;
     }
+    
 };
 

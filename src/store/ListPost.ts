@@ -8,7 +8,15 @@ const state: ListPostModel = {
     error: ''
 }
 
-const getters: GetterTree<ListPostModel, PostModel> = {}
+const getters: GetterTree<ListPostModel, PostModel> = {
+    tags: () => {
+        const items: string[] = [];
+        state.posts.forEach((post:PostModel) => {
+            post.tags.forEach((tag:string) => items.push(tag));
+        })
+        return items;
+    }
+}
 
 const mutations: MutationTree<ListPostModel> = {
     setPosts(state: any, posts: PostModel[]) {

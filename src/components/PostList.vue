@@ -21,10 +21,6 @@ import SinglePost from "@/components/SinglePost.vue";
 
 export default class PostList extends Vue {
     posts!: PostModel[];
-
-    updated(){
-        console.log("updated");
-    }
 }
 </script>
 

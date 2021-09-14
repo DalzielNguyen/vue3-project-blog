@@ -22,6 +22,7 @@
 <script lang="ts">
 import PostModel from "@/model/PostModel";
 import {Options, Vue} from "vue-class-component";
+import {Router, useRouter} from "vue-router";
 import {mapActions} from "vuex";
 
 @Options({
@@ -35,7 +36,11 @@ export default class Create extends Vue {
     tags: string[] = [];
     tag: string = "";
     submitPost!: (post: PostModel) => Promise<boolean>;
+	router!: Router;
 
+	created(){
+		this.router =useRouter();
+	}
     handleKeydown(){
         if(!this.tags.includes(this.tag)) {
             this.tag = this.tag.replace(/\s/,'');
@@ -53,7 +58,7 @@ export default class Create extends Vue {
         }
         const result: boolean = await this.submitPost(post);
         if(result){
-            await this.$router.push({name: "Home"});
+			await this.router.push({name: "Home"});
         }
     }
 }
